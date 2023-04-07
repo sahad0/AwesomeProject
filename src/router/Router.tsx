@@ -7,12 +7,15 @@ import { useEffect, } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../pages/Home';
 import Details from '../pages/Details';
+import { QuoteTypes } from '../types/types';
 
 
 
-export type ExistingUserStackParams = {
+export type StackParams = {
    Home:undefined,
-   Details:undefined,
+   Details:{
+    item:QuoteTypes,
+   },
 }
 
 
@@ -23,7 +26,7 @@ export default function Router():JSX.Element {
   
 
 
-    const Stack = createNativeStackNavigator<ExistingUserStackParams>(); 
+    const Stack = createNativeStackNavigator<StackParams>(); 
 
 
 
