@@ -5,6 +5,8 @@ import { persistReducer, persistStore } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Router from './src/router/Router';
 import storeReducer from './src/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 
 const persistConfig = {
   key: 'root',
@@ -40,7 +42,12 @@ export type AppDispatch = typeof store.dispatch;
 
 const App = () => {
   return (
-    <Router />
+
+    <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Router />
+        </PersistGate>
+    </Provider>
   )
 }
 
