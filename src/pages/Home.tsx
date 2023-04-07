@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, FlatList, ListRenderItem, useWindowDimensions, Alert, ActivityIndicator } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, FlatList, ListRenderItem, useWindowDimensions, Alert, ActivityIndicator, Touchable, Pressable } from 'react-native'
 import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios';
 import { QuoteTypes } from '../types/types';
@@ -6,6 +6,9 @@ import requestStatus, { initial_state } from '../utils/LoadingHandler';
 import RenderItem from '../components/HomeComponents/RenderItem';
 import { useAppDispatch, useAppSelector } from '../Hooks/hooks';
 import { setMessageController } from '../store/store';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../router/Router';
 
 const Home = () => {
 
@@ -13,7 +16,8 @@ const Home = () => {
     const [eventReducer,setEventReducer] = useReducer(requestStatus,initial_state);
     const {height,width} = useWindowDimensions();
     const dispatch  = useAppDispatch();
-    const {wecomeMessage} = useAppSelector((state)=> state.cart.store.value)
+    const {wecomeMessage} = useAppSelector((state)=> state.cart.store.value);
+    const navigation = useNavigation<NativeStackNavigationProp<StackParams,'Home'>>();
 
     useEffect(()=>{
 
@@ -45,9 +49,10 @@ const Home = () => {
 
   return (
     <SafeAreaView style={style.container}>
-            <View style={{height:height*0.1,backgroundColor:'lightgreen',justifyContent:'center',alignItems:'center'}}>
-                <Text style={{color:'black',fontSize:25,}}>Dummy Fetcher</Text>
-            </View>
+            <Pressable onPress={()=>navigation.navigate('Bookmarks')} style={{height:height*0.1,backgroundColor:'lightgreen',justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
+                <Text style={{color:'black',fontSize:17,}}>Go to Bookmarks</Text>
+
+            </Pressable>
             <FlatList initialNumToRender={5} scrollEventThrottle={16} ListEmptyComponent={()=><ActivityIndicator size={'large'} />} data={quote} renderItem={renderItem} keyExtractor={keyExtractor} />
 
     </SafeAreaView>
