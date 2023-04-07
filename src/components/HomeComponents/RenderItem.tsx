@@ -17,9 +17,9 @@ const RenderItem:FC<AppProps> = ({item}):JSX.Element => {
 
 
   return (
-    <Pressable onPress={()=>navigation.navigate('Details',{item:item})}>
-            <Text>{item.title}</Text>
-            <Text>{item.body}</Text>
+    <Pressable style={styles.parent} onPress={()=>navigation.navigate('Details',{item:item})}>
+            <Text style={styles.textStyle}>{ item.title }</Text>
+            <Text style={styles.textStyle1}>{item.body}</Text>
     </Pressable>
   )
 }
@@ -28,9 +28,21 @@ const RenderItem:FC<AppProps> = ({item}):JSX.Element => {
 
 const styles = StyleSheet.create({
     parent:{
-        height: 300,
-        margin:45,
+        
+        margin:25,
+        elevation:5,
+       
+        
+    },
+    textStyle:{
+        fontSize:25,
+        color:'black',
+        fontWeight:'600'
+    },
+    textStyle1:{
+        fontSize:15,
+        color:'gray',
     }
 })
 
-export default memo(RenderItem);
+export default memo(RenderItem,()=>{return false});
