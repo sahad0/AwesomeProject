@@ -21,6 +21,9 @@ When you launch the app, you should see a list of dummy data displayed on the sc
 The app fetches the data from an external API using the axios() method, which returns a Promise that resolves to the response object. Once the response has been received, the data is converted to JSON format and stored in the app's state using the useState() hook. The list is then rendered using the FlatList component from the React Native core library.
 
 
+You can bookmark and remove Quotes with the help of Redux State management.
+
+
 
 Screenshots
 
@@ -30,6 +33,13 @@ Screenshots
 
 
 ![Screenshot from 2023-04-07 15-35-55](https://user-images.githubusercontent.com/88948601/230591313-36cd2fbc-72d9-4fd5-a422-6523bed17712.png)
+
+
+![Screenshot from 2023-04-07 17-20-34](https://user-images.githubusercontent.com/88948601/230604276-6d1266e2-8732-47b3-bdda-180dd9708792.png)
+
+
+
+![Screenshot from 2023-04-07 17-20-39](https://user-images.githubusercontent.com/88948601/230604285-083e051b-a752-4d5d-89ef-ef174032ef6f.png)
 
 
 
