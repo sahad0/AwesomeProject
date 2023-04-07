@@ -10,6 +10,7 @@ type AppProps= {
 }
 
 
+
 const RenderItem:FC<AppProps> = ({item}):JSX.Element => {
 
     const {height,width} = useWindowDimensions();
@@ -45,4 +46,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default memo(RenderItem,()=>{return false});
+export default memo(RenderItem,(prev,next)=>prev.item.id===next.item.id);
