@@ -38,7 +38,7 @@ const Home = () => {
         }
     }
 
-    const keyExtractor = (item:QuoteTypes):string => item.id.toString();
+    const keyExtractor = (item:QuoteTypes):string => item.id.toString()+'xpdemrgcy';
     const renderItem:ListRenderItem<QuoteTypes> = ({item})=> <RenderItem item={item} />
 
 
@@ -48,7 +48,7 @@ const Home = () => {
             <View style={{height:height*0.1,backgroundColor:'lightgreen',justifyContent:'center',alignItems:'center'}}>
                 <Text style={{color:'black',fontSize:25,}}>Dummy Fetcher</Text>
             </View>
-            <FlatList ListEmptyComponent={()=><ActivityIndicator size={'large'} />} data={quote} renderItem={renderItem} keyExtractor={keyExtractor} />
+            <FlatList initialNumToRender={5} scrollEventThrottle={16} ListEmptyComponent={()=><ActivityIndicator size={'large'} />} data={quote} renderItem={renderItem} keyExtractor={keyExtractor} />
 
     </SafeAreaView>
   )
